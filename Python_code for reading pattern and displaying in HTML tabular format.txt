@@ -1,0 +1,24 @@
+# !/usr/bin/python
+import sys
+import os
+import csv
+import string
+
+
+##htmlFile = "C:\DummyDir\HourlySubscriberReport_201912251900.html"
+csvFile1 ="C:\DummyDir\HourlySubscriberReport_201912251900.csv"
+table_string = ""
+
+reader = csv.reader(open(csvFile1), delimiter=",")
+table_string = "<html>\n<head>\n<title>alerts</title>\n</head>\n<body>\n<table border=1>"
+for row in reader:
+    table_string += '<tr>'
+    for column in row:
+        table_string += '<td>' + column + '</td>'
+    table_string += '</tr>'
+table_string += '</table>'
+
+tt = 'test.html'
+htmlFile2 = open(tt, "w")
+htmlFile2.write(table_string)
+htmlFile2.close()
